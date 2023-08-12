@@ -1,0 +1,94 @@
+There are three main service models in cloud computing:
+
+1)Infrastructure as a Service (IaaS): Provides virtualized computing resources over the internet, such as virtual machines, storage, and networking.
+==>cloud will give you their hardware and a os installed... you need to do whatever required
+
+2)Platform as a Service (PaaS): Offers a platform and environment to develop, manage, and deploy applications without worrying about the underlying infrastructure.
+
+3)Software as a Service (SaaS): Delivers software applications over the internet on a subscription basis, eliminating the need for local installation and maintenance.
+
+pay as you go -> jitne der resources use kare utne paise do
+
+availability zones away from each other --> around 100 kms
+
+
+Create a instance(created ec2 -->means lending virtual machines)
+
+--> connect to instance as follows 
+ssh -i /path/to/private_key_file user@hostname
+
+-->cat /etc/os-release -> know your operating system
+-->free -m -> know your free ram
+-->lscpu -->details of your cpu
+
+-->sudo -i login as root user after connecting
+-->chmod 400 //4-read 2-write 1 -execute // in this case only read
+
+generally allocated ip address ->change when we restart or start/stop the instance 
+-->use elastic ip address... dosent change until you release it... attach and dettach the elastic ip address
+
+ebs(elastic block store) volumes -> used for persistent data storage ie the data can be accessed even if we turn off the machines
+-->they also encrypt data to ensure authentication
+-->need to attach instance within the same availibility zone
+--> we can attach,dettach,resize ebs storages
+-->resize can only be increased ... not decreased
+-->if you want to decrease, create a new ebs with lower size ... copy that data ... and attach/dettach
+--> can also increase root size ... lengthy procedure
+
+-->can attach one ebs volume to multiple instance s
+--> can encrypt the ebs volumes
+
+#we can change availability zone of ebs volume with snapshots
+snapshot->point of time .. stores local data at that time 
+-> snapshot of a ebs 
+-> snapshot is region specific
+->types of backup .. full backup .. increamental backup-> moves previous data and then copies new data ... differential backup 
+.. aws uses increamental
+
+
+# lifecycle manager-> auto snapshot taker given a interval -> can have count and age of prev snapshots
+
+--> can copy snapshot from one region to another
+
+#AMI (Amazon Machine Image)  save the current state of the machine
+-->method 1 create direct image from ec2 instance
+-->method 2 create a image from root snapshot ie(snapshot of the root file storage)
+-->can deploy a new machine from that image
+-->can share ami with another users too
+ 
+# Classic and elastic load balancer
+-->types of load balancers 1)application 2)network 3)gateway
+clients -> internet -> load balancer -> servers
+uses round robin scheduling methods
+
+--> defining classic load balancers .. assign security group.. configure security settings ... configure health check(make a page in your server which will help us in knowing if our machine is active) ... add instances ... you can also access instances through their direct ip address ... if you dont want.. remove http request from the instances ... go to security groups of instance > edit inbound rules >http > add security group of load balancer ... can edit and remove instances
+ 
+-->application load balancer...passes traffic to target groups...target groups contain instances
+-->process first create a target group ->of instances or application load balancers 
+-->it knows the path(/login) and also knows the port(eg: 8080)
+-->can change target groups traffic according to the path(i.e. alag alag path pe alag alag target groups run ho sakte hai)
+-->process load balancers --> listeners --> view/edit rules --> insert rules --> path
+
+stickiness -> feature .. requests from same client are sent to the same server that initially served the client's request .. for a specific time period
+process -> load balancer->attributes ->stickiness on -> do it with cookies
+
+-->need a ssl certificate for https
+-->cross zone load balancing enabled in elastic load balancers ... load from one zone is also spread across another zone
+
+
+#  Auto scaling in aws
+handles / creates machines with respect to load present
+--> process --> auto scaling groups --> select launch template 
+--> increases to maximum capacity with load
+--> can also increase to required manually
+
+-->can connect one instance to multiple networks through network interface card
+
+# IAM(Identity access manager)
+
+
+
+
+
+
+

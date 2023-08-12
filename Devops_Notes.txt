@@ -1,0 +1,86 @@
+# Models in SDLC
+1)Waterfall -each phanse completed before other starts
+-->difficult changes
+2)AGILE -divide into smaller lists
+3)Spiral
+
+
+# Goal of CI to detect errors at a early stage CI-tools : JENKINS , CIRCLECI , TEAMCITY , BAMBOO CI
+
+# CD-continous delivery --> extension of continous integration-->automated-->invloves server provisioning , dependencies , configure changes,network , deploy the artifact
+
+# testing should also be automated 
+
+# Virtualization -->one computer does a job of various computers(virtual machines).
+
+LESSON01 - If you want to automate anything, you must need to know how to do it manually
+
+////////////////////  VAGRANT  \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+Tools --> vagrant-to automate vm setup
+-->no OS installations
+-->images available in vagrant cloud-->setup through those vm images
+-->it will create vm's in oracle virtualbox by default.
+
+
+-->vagrant init  -- initialize a vagrant file with specific os
+eg: vagrant init ubuntu/bionic64
+
+-->vagrant up --run the vm if present or import..create..and run
+
+-->vanrant ssh -- enter into cmd of the vm you started(need to be in the vm directory)
+
+-->vagrant halt -- stop or shutdown the running vm
+
+-->vagrant destroy -- delete the created vm
+
+-->vagrant reload -- reload the vm
+
+////////////////////////  LINUX  \\\\\\\\\\\\\\\\\\\\\\\\\\
+-->open source software 
+-->everything considered as a file in linux
+-->ability to chain programs for complex operations
+
+#commands
+-->mkdir a b c -- creates 3 folders with names a,b,c
+
+-->touch file1.txt -- creates a file named file1.txt
+
+-->touch devopsfile{1..10}.txt -- creates 10 files named devopsfile1.txt , devopsfile2.txt...
+
+-->cp file1.txt c -- copies file1.txt to c folder --only copies files  -->cp -r a b -- copies folder a to b
+
+-->cd ~  -- changes your directory to home directory
+
+-->mv test1.txt a -- moves test1 to folder a -->mv test1.txt test2.txt -- renames the file test1->test2
+-->mv *.txt a -->moves all files with .txt to folder a
+
+-->rm -r *  -- removes everything from the current directory
+
+######## VIM editor (can also use nano) ########
+
+--> vim testfile1.txt ->opens if present or creates a new file
+-->vim -->[ 3 modes ]-->1)command mode 2)insert(i.e. edit) mode 3)extended command mode  --- initially in command mode
+
+-->press i or o to get into insert mode -->hit escape to get out of it
+-->: to enter extended command mode , :w to save the file , :q to quit  , :q! to forcefully quit
+-->se:nu shows numbers  , SHIFT+g-->last line , gg->first libe
+-->yy-->copy  ,  p-->paste , u-->duno , 5dd->delete 5 lines
+-> /search --> in command mode --> case sensitive
+
+-->filters and io redirection command
+
+-------------------back to commands--------------------
+grep yash abc.txt --> search "yash" in file named abc.txt
+grep -i yash abc.txt -->not case sensitive
+
+tail -f /var/logs/messages --> outputs logs in real time
+ 
+#users in linux -->1)root 2)regular  3)service
+--> useradd abc -- adds a user named abc
+-->su abc -- switch user to aws
+-->last --logs the login users
+
+
+
+
+
