@@ -81,6 +81,21 @@ tail -f /var/logs/messages --> outputs logs in real time
 -->last --logs the login users
 
 
+####### Services #######
+Jenkeins-backend open source web service
 
+-->systemctl status httpd -- will give status of httpd service
+-->"       " reload "   " -- reloads
+-->"       " restart "   " -- reloads
+-->"       " start "   " -- reloads
+-->"       " stop "   " -- reloads
+-->"       " enable "   " -- directly starts at boot time
+-->apt purge --remov a package with all its system data
+
+
+->ps -ef -->shows all processes
+-->top -->shows only top processes like cmd
+-->kill process_id --> kills processes with given processes id -- also its children
+-->kill -9 ""  --> kills forcefully and child processes become orphan
 
 
